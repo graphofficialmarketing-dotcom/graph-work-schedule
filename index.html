@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ลงวันหยุดพนักงาน</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap"><style id="css">
-/* VOICE: a working roster for café managers — calm, exact, quick to scan
-   IDEA: the paper shift sheet pinned behind the espresso bar, ruled by day
-   PICTURE: the month grid itself, coloured codes, a duty row that turns red when short
-   COLOUR and TYPE: espresso band, white sheet, one colour per leave code; IBM Plex Sans Thai
-   LAYOUT: band with month + actions, then the grid full width; other tabs as calm tables */
-:root{color-scheme:light dark;--bg:light-dark(#fff,#141009);--ink:light-dark(#1d1410,#f1e9e2);--mut:light-dark(#76665c,#a8988d);--line:light-dark(#e7ded7,#33281f);--band:light-dark(#24160f,#0b0705);--soft:light-dark(#f7f2ee,#1d1712);--acc:light-dark(#c8501e,#ff8a52);
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ลงวันหยุดพนักงาน</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap"><style id="css">
+/* VOICE: GRAPH house style — quiet, exact, black on white
+   IDEA: graph paper; a roster ruled like a chart, hairlines on a fine grid
+   PICTURE: the schedule grid itself, monochrome codes, red only when something is wrong
+   COLOUR and TYPE: black, white, greys, one signal red; Archivo for the wordmark and Latin, IBM Plex Sans Thai
+   LAYOUT: black graph-paper band with wordmark, square edges everywhere, the grid full width */
+:root{color-scheme:light dark;--bg:light-dark(#fff,#0b0b0b);--ink:light-dark(#0b0b0b,#f2f2f2);--mut:light-dark(#6b6b6b,#9a9a9a);--line:light-dark(#d6d6d6,#2c2c2c);--band:light-dark(#0b0b0b,#000);--soft:light-dark(#f4f4f4,#161616);--acc:#e5322d;
+--wB:light-dark(#e4e4e4,#2e2e2e);--wI:light-dark(#0b0b0b,#f2f2f2);--pB:light-dark(#0b0b0b,#f2f2f2);--pI:light-dark(#fff,#0b0b0b);--sB:transparent;--sI:var(--ink);--lB:transparent;--lI:var(--ink);--aB:light-dark(#b9b9b9,#5a5a5a);--aI:light-dark(#0b0b0b,#fff);--bad:#e5322d;--badB:light-dark(#fde6e5,#3a1311)}
 --wB:light-dark(#e9e2db,#3a3029);--wI:light-dark(#4a3a30,#e6d9cf);--pB:light-dark(#ffd9d5,#4a1814);--pI:light-dark(#b3261e,#ffb3ab);--sB:light-dark(#e8dcff,#2f2150);--sI:light-dark(#5b2fb5,#cdb8ff);--lB:light-dark(#ffe6ad,#45330a);--lI:light-dark(#875800,#ffd27a);--aB:light-dark(#d5e7ff,#11294a);--aI:light-dark(#1452a8,#a9ccff);--bad:light-dark(#d92d20,#ff6b5e);--badB:light-dark(#ffe3e0,#3d1210)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "IBM Plex Sans Thai",system-ui,sans-serif;overflow-x:clip}
+*,*::before{border-radius:0!important}
+.band{background-color:var(--band);background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:16px 16px}
+.wm{display:block;font-family:Archivo,"IBM Plex Sans Thai",sans-serif;font-weight:800;font-size:clamp(38px,5vw,60px);letter-spacing:.14em;line-height:1}
+.wm+span{display:block;font-size:clamp(18px,2vw,22px);font-weight:500;margin-top:8px}
+.k-SH{box-shadow:inset 0 0 0 1.5px currentColor}.k-LA{background-image:repeating-linear-gradient(135deg,var(--mut) 0 1.5px,transparent 1.5px 5px)!important}
+.g .nm b,.w .shop b,.mon b{font-family:Archivo,"IBM Plex Sans Thai",sans-serif}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.band{background:var(--band);color:#f6eee8;padding:20px max(3vw,16px) 0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.band{background:var(--band);color:#fff;padding:20px max(3vw,16px) 0}
 .top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between}
 h1{margin:0;font-size:clamp(26px,3.4vw,38px);line-height:1.05;font-weight:700;text-wrap:balance}
-.sub{color:#cbb9ac;font-size:14px;margin-top:6px}
+.sub{color:#a8a8a8;font-size:14px;margin-top:6px}
 .save{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.st{font-size:14px;color:#cbb9ac}.st.dirty{color:#ffb27a}
+.st{font-size:14px;color:#a8a8a8}.st.dirty{color:#ff8a84}
 .b{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-weight:600}
-.b.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.b.pri{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.b{border-color:var(--ink)}
 .b:disabled{opacity:.45;cursor:not-allowed}
-.band .b{background:transparent;color:#f6eee8;border-color:#5a463a}.band .b.pri{background:var(--acc);border-color:var(--acc)}
+.band .b{background:transparent;color:#fff;border-color:#fff}.band .b.pri{background:#fff;border-color:#fff;color:#0b0b0b}
 nav.tabs{display:flex;gap:4px;margin-top:18px;overflow-x:auto}
-nav.tabs button{flex:none;border:0;background:transparent;color:#cbb9ac;padding:12px 16px;border-radius:10px 10px 0 0;font-weight:600;min-height:44px}
+nav.tabs button{flex:none;border:0;background:transparent;color:#a8a8a8;padding:12px 16px;border-radius:10px 10px 0 0;font-weight:600;min-height:44px}
 nav.tabs button.on{background:var(--bg);color:var(--ink)}
 main{padding:18px max(3vw,16px) 48px}
 .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
@@ -46,13 +54,13 @@ table.g{border-collapse:separate;border-spacing:0;font-size:13px}
 .g thead th{position:sticky;top:0;z-index:3;background:var(--soft)}
 .g thead .nm{z-index:4;background:var(--soft)}
 .dh{width:36px;min-width:36px;padding:4px 0!important}.dh b{display:block;font-size:14px}.dh i{font-style:normal;color:var(--mut);font-size:12px}
-.dh.we i{color:var(--acc)}
+.dh.we i{color:var(--ink);font-weight:700}
 .dh.bl{background-image:repeating-linear-gradient(135deg,var(--badB) 0 4px,transparent 4px 8px)}
 .c{height:38px;cursor:pointer;font-weight:700}
-.c:hover{box-shadow:inset 0 0 0 2px var(--acc)}
+.c:hover{box-shadow:inset 0 0 0 2px var(--ink)}
 .c.bl{background-image:repeating-linear-gradient(135deg,var(--badB) 0 3px,transparent 3px 7px)}
 .c.k-D,.c.k-P,.c.k-SH,.c.k-LA,.c.k-AL{background-image:none}
-.c.we{background-color:var(--soft)}
+.c.we:not([class*="k-"]){background-color:var(--soft)}
 .bh th{position:sticky;left:0;background:var(--soft);text-align:left;padding:10px;font-size:14px;z-index:1}
 .bh th span{color:var(--mut);font-weight:400;margin-left:8px}
 .du{font-weight:700;color:var(--mut);height:30px}.du.low{background:var(--badB);color:var(--bad)}
@@ -65,7 +73,7 @@ td.sm{font-weight:600}td.sm.over{color:var(--bad)}td.sm.done{color:light-dark(#2
 .opt{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:6px 10px;margin-bottom:6px;min-height:44px}
 .opt:disabled{opacity:.55;cursor:not-allowed}
 .opt .why{display:block;font-size:12px;color:var(--bad)}.opt .wn{display:block;font-size:12px;color:var(--lI)}
-.opt.cur{box-shadow:inset 0 0 0 2px var(--acc)}
+.opt.cur{box-shadow:inset 0 0 0 2px var(--ink)}
 .shrow{display:flex;gap:6px;align-items:center;margin-bottom:6px}.shrow select{flex:1}
 .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--band);color:#fff;padding:12px 18px;border-radius:12px;z-index:30;max-width:92vw;font-size:15px}
 table.t{border-collapse:collapse;width:100%;font-size:15px}
@@ -90,13 +98,13 @@ table.w{border-collapse:collapse;font-size:13px;min-width:1000px;width:100%}
 .w .shop{text-align:left;min-width:130px}.w .shop b{display:block;font-size:14px}
 .w td.tm{min-width:92px}
 .w td.shop{position:sticky;left:0;z-index:1;background:var(--bg)}.w th.shop{position:sticky;left:0;z-index:2}
-.open{display:inline-block;background:light-dark(#fff27a,#5a5210);color:light-dark(#3a3500,#fff5a8);padding:0 6px;border-radius:4px;font-size:12px;margin-top:4px;white-space:nowrap}
-.chip{display:block;border-radius:4px;padding:1px 6px;margin:2px 0;font-weight:700;color:#fff;white-space:nowrap}
+.open{display:inline-block;background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);padding:0 6px;border-radius:4px;font-size:12px;margin-top:4px;white-space:nowrap}
+.chip{display:block;padding:1px 6px;margin:2px 0;font-weight:700;color:#fff;white-space:nowrap}
 .jb{display:block;color:light-dark(#c0261c,#ff8a80);font-weight:700;white-space:nowrap;margin:1px 0}
 .tl{display:block;font-size:11px;color:var(--mut);margin-top:6px;white-space:nowrap}
 .offc{font-size:12px;color:var(--mut);text-align:left!important}
 .hl{outline:3px solid var(--acc);outline-offset:1px}.dim{opacity:.22}
-.c.mv{box-shadow:inset 0 -4px 0 var(--acc)}
+.c.mv{box-shadow:inset 0 -4px 0 var(--ink)}
 .sg{min-height:24px;border-radius:6px;padding:1px}.sg.over{outline:2px dashed var(--acc);background:var(--soft)}
 .pc{cursor:pointer}.pc[draggable=true]{cursor:grab}
 .addp{display:block;width:100%;border:1px dashed var(--line);background:transparent;color:var(--mut);border-radius:6px;min-height:26px;font-size:15px;margin-top:2px;opacity:0}
@@ -238,7 +246,7 @@ function toast(msg){const t=document.createElement('div');t.className='toast';t.
 function shell(){
   const st=readOnly?'ดูได้อย่างเดียว':dirty?'มีการแก้ไขที่ยังไม่บันทึก':S.savedAt?'บันทึกล่าสุด '+new Date(S.savedAt).toLocaleString('th-TH',{dateStyle:'medium',timeStyle:'short'}):'ยังไม่เคยบันทึก';
   const T=[['work','ตารางงาน'],['leave','ลงวันหยุด'],['branches','สาขาและกำลังคน'],['staff','พนักงาน'],['holidays','วันหยุดและเทศกาล'],['help','วิธีลงวันหยุด']];
-  return `<header class="band"><div class="top"><div><h1>ตารางวันหยุดพนักงาน</h1><div class="sub">${S.staff.filter(p=>p.role!=='PT').length} คนประจำ · ${S.branches.length} สาขา · ระบบตรวจกำลังคนและวันห้ามหยุดให้อัตโนมัติ</div></div>
+  return `<header class="band"><div class="top"><div><h1><span class="wm">GRAPH</span><span>ตารางงานและวันหยุดพนักงาน</span></h1><div class="sub">${S.staff.filter(p=>p.role!=='PT').length} คนประจำ · ${S.branches.length} สาขา · ระบบตรวจกำลังคนและวันห้ามหยุดให้อัตโนมัติ</div></div>
   <div class="save"><span class="st ${dirty?'dirty':''}">${st}</span><button class="b" data-a="undo" ${undo.length?'':'disabled'}>ย้อนกลับ</button><button class="b pri" data-a="save" ${readOnly?'disabled':''}>บันทึกและแชร์</button></div></div>
   <nav class="tabs">${T.map(([k,n])=>`<button data-tab="${k}" class="${tab===k?'on':''}">${n}</button>`).join('')}</nav></header><main id="main"></main>`;
 }
@@ -265,7 +273,7 @@ function gridView(){
   <span class="grow"></span><button class="b" data-a="autow" ${readOnly?'disabled':''}>จัดวันหยุดประจำสัปดาห์อัตโนมัติ</button><button class="b" data-a="csv">ส่งออก CSV</button></div>
   <div class="legend">${Object.entries(CODES).map(([k,n])=>`<span><i class="k k-${k}">${k==='SH'?'SH-4':k}</i>${n}</span>`).join('')}<span><i class="k hatch" style="color:var(--bad)">/</i>วันห้ามหยุด: นักขัตฤกษ์ เทศกาล หยุดยาว</span><span>สิทธิ์ P ปี ${y+543}: ${q} วัน · หยุดได้ต่อวัน เชียงใหม่ ${S.set.capCM} คน ภูเก็ต ${S.set.capPK} คน (ไม่นับ P)</span></div>
   <div class="scroll"><table class="g"><thead>${head}</thead><tbody>${body}</tbody></table></div>
-  <p class="note">แตะช่องวันที่เพื่อลงรหัส หรือย้ายไปช่วยสาขาอื่นและเปลี่ยนกะของวันนั้น (ช่องที่มีขีดสีส้มด้านล่างคือวันที่ไปช่วยสาขาอื่น) ระบบจะไม่ให้ลงถ้าคนในสาขาจะไม่พอ ถ้าสัปดาห์นั้นหยุดประจำไปแล้ว หรือถ้าตรงกับวันห้ามหยุด แถว "มาทำงาน" จะเป็นสีแดงเมื่อคนต่ำกว่าขั้นต่ำ</p>`;
+  <p class="note">แตะช่องวันที่เพื่อลงรหัส หรือย้ายไปช่วยสาขาอื่นและเปลี่ยนกะของวันนั้น (ช่องที่มีขีดดำหนาด้านล่างคือวันที่ไปช่วยสาขาอื่น) ระบบจะไม่ให้ลงถ้าคนในสาขาจะไม่พอ ถ้าสัปดาห์นั้นหยุดประจำไปแล้ว หรือถ้าตรงกับวันห้ามหยุด แถว "มาทำงาน" จะเป็นสีแดงเมื่อคนต่ำกว่าขั้นต่ำ</p>`;
 }
 
 function dressStyle(t){return/น้ำเงิน|เนวี่|navy/i.test(t)?'background:#1f3a6b;color:#fff':/ฟ้า|บลู|blue/i.test(t)?'background:#cfe6ff;color:#0b2a4a':/ขาว|white/i.test(t)?'background:#fff;color:#111':''}
@@ -457,7 +465,7 @@ function buildDoc(){
   const css=document.getElementById('css').textContent,app=document.getElementById('app').textContent;
   const json=JSON.stringify({...S,savedAt:Date.now()}).replace(/</g,'\\u003c');
   const E='</'+'script>';
-  return'<!DOCTYPE html>\n<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ลงวันหยุดพนักงาน</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap"><style id="css">'+css+'</style></head><body><div id="root"></div><script id="state" type="application/json">'+json+E+'<script id="app">'+app+E+'</body></html>';
+  return'<!DOCTYPE html>\n<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ลงวันหยุดพนักงาน</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap"><style id="css">'+css+'</style></head><body><div id="root"></div><script id="state" type="application/json">'+json+E+'<script id="app">'+app+E+'</body></html>';
 }
 async function save(){
   touch();if(!ART){const ok=dlFile('index.html',buildDoc(),'text/html');toast(ok?'ดาวน์โหลด index.html ที่มีข้อมูลล่าสุดแล้ว นำไปอัปโหลดทับไฟล์เดิมใน GitHub':'เก็บไว้ในเบราว์เซอร์นี้แล้ว');render();return}
